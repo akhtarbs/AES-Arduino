@@ -18,6 +18,33 @@
 AES128 aes128;
 byte buffer[16];
 
+
+
+
+void setup(){
+    Serial.begin(9600);
+
+//    Program Enkripsi dengan AES-128 Mode ECB
+    String stringkey="1234567890123456";
+    String stringtext="1234567890123456";
+    String hasilaes = Aes128Enkripsi(&aes128,stringkey,stringtext);
+    Serial.println("Hasil Enkripsi Dengan AES-128 ECB");
+    Serial.println(hasilaes);
+
+//    Program Dekripsi dengan AES-128 Mode ECB
+//    String dekripkey="abababababababab";
+//    String dekriptext = "294b844ea92e788428985f684c9b15ba";
+
+
+    String hasildekripaes = Aes128Dekripsi(&aes128,stringkey,hasilaes);
+    Serial.println("Hasil Dekripsi Dengan AES-128 ECB");
+    Serial.println(hasildekripaes);
+}
+
+void loop(){
+}
+
+
 String Aes128Enkripsi(BlockCipher *cipher,String stringkey,String stringtext){
     int i_key = stringkey.length() + 1;
     char key[i_key];
@@ -73,27 +100,3 @@ String Aes128Dekripsi(BlockCipher *cipher, String stringkey,String stringtexthex
     return oAesPlain;
 }
 
-
-
-void setup(){
-    Serial.begin(9600);
-
-//    Program Enkripsi dengan AES-128 Mode ECB
-    String stringkey="1234567890123456";
-    String stringtext="1234567890123456";
-    String hasilaes = Aes128Enkripsi(&aes128,stringkey,stringtext);
-    Serial.println("Hasil Enkripsi Dengan AES-128 ECB");
-    Serial.println(hasilaes);
-
-//    Program Dekripsi dengan AES-128 Mode ECB
-//    String dekripkey="abababababababab";
-//    String dekriptext = "294b844ea92e788428985f684c9b15ba";
-
-
-    String hasildekripaes = Aes128Dekripsi(&aes128,stringkey,hasilaes);
-    Serial.println("Hasil Dekripsi Dengan AES-128 ECB");
-    Serial.println(hasildekripaes);
-}
-
-void loop(){
-}
