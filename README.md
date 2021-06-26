@@ -5,6 +5,7 @@ AES in Arduino
 AES 128 - ECB
 
 Data Plaintext = 16 huruf (String)
+
 Data Key       = 16 huruf (String)
 
 
